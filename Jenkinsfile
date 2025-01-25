@@ -19,11 +19,11 @@
 //     }
 // }
 
-properties([
-    pipelineTriggers([
-        pollSCM('H/2 * * * *') // Poll setiap 2 menit
-    ])
-])
+// properties([
+//     pipelineTriggers([
+//         pollSCM('H/2 * * * *') // Poll setiap 2 menit
+//     ])
+// ])
 
 node {
     docker.image('node:16-buster-slim').inside('-p 3000:3000') {
