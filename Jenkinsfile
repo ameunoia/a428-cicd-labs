@@ -19,17 +19,14 @@
 //     }
 // }
 
-// properties([
-//     pipelineTriggers([
-//         pollSCM('H/2 * * * *') // Poll setiap 2 menit
-//     ])
-// ])
+properties([
+    pipelineTriggers([
+        pollSCM('H/2 * * * *') // Poll setiap 2 menit
+    ])
+])
 
 node {
     docker.image('node:16-buster-slim').inside('-p 3000:3000') {
-        // stage('Checkout') {
-        //     checkout([$class: 'GitSCM', branches: [[name: '*/react-app']], userRemoteConfigs: [[url: '/home/dicoding/devops-intermediete/a428-cicd-labs']]])
-        // }
         stage('Build') {
             sh 'npm install'
             echo 'Build stage completed successfully!'
@@ -40,5 +37,3 @@ node {
         }
     }
 }
-
-//test again 2 minutes
