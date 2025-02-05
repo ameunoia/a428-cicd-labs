@@ -27,7 +27,7 @@ properties([
 
 node {
     env.VERCEL_TOKEN = credentials('vercel-token')
-    docker.image('node:16-buster-slim').inside('-p 3000:3000') {
+    docker.image('node:20-buster-slim').inside('-p 3000:3000') {
         stage('Checkout') {
             checkout([$class: 'GitSCM', branches: [[name: '*/react-app']], userRemoteConfigs: [[url: '/home/dicoding/devops-intermediete/a428-cicd-labs']]])
         }
