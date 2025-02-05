@@ -49,7 +49,7 @@ node {
             // sh "sudo npm install -g vercel"
             sh '#!/bin/bash \n npx vercel --token PwAHxxWNmkJ0wxOhoOKbvnwr --prod --confirm'
             sleep(time:1, unit:"MINUTES")
-            sh 'vercel --token $VERCEL_TOKEN --confirm --prod --force'
+            sh 'npx vercel --token $VERCEL_TOKEN --confirm --prod --force'
         }
     }
 }
