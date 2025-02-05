@@ -26,6 +26,7 @@ properties([
 ])
 
 node {
+    env.VERCEL_TOKEN = credentials('vercel-token')
     docker.image('node:16-buster-slim').inside('-p 3000:3000') {
         stage('Checkout') {
             checkout([$class: 'GitSCM', branches: [[name: '*/react-app']], userRemoteConfigs: [[url: '/home/dicoding/devops-intermediete/a428-cicd-labs']]])
@@ -42,9 +43,12 @@ node {
             input message: 'Lanjutkan ke tahap Deploy? (Klik "Proceed" untuk melanjutkan)'
         }
         stage('Deploy') {
-            sh './jenkins/scripts/deliver.sh'
-            sleep(time:1, unit:"MINUTES")
-            sh './jenkins/scripts/kill.sh'
+            // sh './jenkins/scripts/deliver.sh'
+            // sleep(time:1, unit:"MINUTES")
+            // sh './jenkins/scripts/kill.sh'
+            echo "Deploying to Vercel..."
+            sh "npm install -g vercel"
+            sh "vercel --token $VERCEL_TOKEN --prod --confirm"
         }
     }
 }
