@@ -48,7 +48,7 @@ node {
             // sh './jenkins/scripts/kill.sh'
             echo "Deploying to Vercel..."
             // sh "sudo npm install -g vercel"
-            sh "npx vercel --token $VERCEL_TOKEN --prod --confirm"
+            sh '#!/bin/bash \n npx vercel --token $VERCEL_TOKEN --prod --confirm'
         }
     }
 }
