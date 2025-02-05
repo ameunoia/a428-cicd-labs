@@ -47,7 +47,7 @@ node {
             // sleep(time:1, unit:"MINUTES")
             // sh './jenkins/scripts/kill.sh'
             echo "Deploying to Vercel..."
-            sh "npm install -g vercel"
+            sh "sudo npm install -g vercel"
             sh "vercel --token $VERCEL_TOKEN --prod --confirm"
         }
     }
