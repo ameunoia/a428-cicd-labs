@@ -49,7 +49,7 @@ node {
             // sh "sudo npm install -g vercel"
             sh '#!/bin/bash \n npx vercel --token PwAHxxWNmkJ0wxOhoOKbvnwr --prod --confirm'
             sleep(time:1, unit:"MINUTES")
-            sh 'npx vercel remove submission-cicd-pipeline-argasatya16.vercel.app --token PwAHxxWNmkJ0wxOhoOKbvnwr --yes'
+            sh 'npx vercel remove submission-cicd-pipeline-argasatya16 --token PwAHxxWNmkJ0wxOhoOKbvnwr --yes'
         }
     }
 }
