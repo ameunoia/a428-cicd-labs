@@ -44,11 +44,12 @@ node {
         }
         stage('Deploy') {
             // sh './jenkins/scripts/deliver.sh'
-            // sleep(time:1, unit:"MINUTES")
             // sh './jenkins/scripts/kill.sh'
             echo "Deploying to Vercel..."
             // sh "sudo npm install -g vercel"
             sh '#!/bin/bash \n npx vercel --token PwAHxxWNmkJ0wxOhoOKbvnwr --prod --confirm'
+            sleep(time:1, unit:"MINUTES")
+            sh 'vercel --token $VERCEL_TOKEN --confirm --prod --force'
         }
     }
 }
